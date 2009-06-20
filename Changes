@@ -1,6 +1,10 @@
 POE::Component::CPAN::YACSmoke
 ==============================
 
+1.36	Sat Jun 20 10:56:29 BST 2009
+	- Makefile.PL meta fixes.
+	- Deprecation warnings.
+
 1.34	Mon Aug  4 10:29:32 BST 2008
 	- Forgot to add a 'use' line to minismoker
 
