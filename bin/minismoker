@@ -1,4 +1,6 @@
 #!perl
+# PODNAME: minismoker
+#ABSTRACT: Example script for POE::Component::CPAN::YACSmoke
 use strict;
 BEGIN { eval "use Event;"; }
 use File::Spec;
@@ -73,9 +75,9 @@ sub _start_smoking {
   my ($kernel,$heap) = @_[KERNEL,HEAP];
   $heap->{_start_time} = time();
   if ( @{ $heap->{pending} } ) {
-    $kernel->post( 'smoker', 'submit', { event => '_results', module => $_, debug => $debug } ) 
+    $kernel->post( 'smoker', 'submit', { event => '_results', module => $_, debug => $debug } )
 	for @{ $heap->{pending} };
-  } 
+  }
   elsif ( $author ) {
     $kernel->post( 'smoker', 'author', { event => '_search', search => $author, debug => $debug } );
   }
@@ -177,11 +179,7 @@ sub _kill_error {
   return;
 }
 
-__END__
-
-=head1 NAME
-
-minismoker - Example script for POE::Component::CPAN::YACSmoke
+=pod
 
 =head1 SYNOPSIS
 
@@ -226,7 +224,7 @@ Specify the cpanid of an CPAN author. This will determine the list of modules th
 Specify a string representing a package search criteria to use. The list of modules generated will then
 be smoked.
 
-=item --debug 
+=item --debug
 
 Spews out whatever is happening in the component as it happens.
 
@@ -250,10 +248,6 @@ forcefully terminates due to excessive idle or run time.
 
 =back
 
-=head1 AUTHOR
-
-Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
-
 =head1 SEE ALSO
 
 L<POE::Component::CPAN::YACSmoke>
@@ -263,3 +257,5 @@ L<POE>
 L<CPANPLUS>
 
 L<CPAN::YACSmoke>
+
+=cut
